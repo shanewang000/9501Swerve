@@ -23,7 +23,7 @@ public class RobotContainer {
       () -> stick.getLeftY(),
       () -> stick.getLeftX(),
       () -> stick.getRightX(),
-      () -> !stick.getAButton()));
+      () -> stick.getAButton()));
 
     configureBindings();
   }

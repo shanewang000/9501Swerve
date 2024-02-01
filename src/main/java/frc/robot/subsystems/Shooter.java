@@ -11,7 +11,7 @@ public class Shooter extends SubsystemBase{
     private VictorSP shooterR = new VictorSP(Constants.ShooterConstants.kShooterMotorPortR);
 
 
-    private double speed;
+    private double speed = Constants.ShooterConstants.speed;
 
     public Shooter(){
         shooterL.isSafetyEnabled();

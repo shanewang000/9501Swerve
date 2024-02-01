@@ -4,16 +4,12 @@ import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
-import frc.robot.Robot;
 
 public class SwerveModule {
     // 宣告馬達
@@ -36,16 +32,9 @@ public class SwerveModule {
     private final boolean absoluteEncoderReversed;
     private final double absoluteEncoderOffsetRad;
 
+    private final double test = 0.5;
 
-    /**
-     * @param driveMotorId
-     * @param turningMotorId
-     * @param driveMotorReversed
-     * @param turningMotorReversed
-     * @param absoluteEncoderId
-     * @param absoluteEncoderOffset
-     * @param absoluteEncoderReversed
-     */
+
 
     public SwerveModule(int driveMotorId, int turningMotorId, boolean driveMotorReversed, boolean turningMotorReversed, int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed){
         // $
@@ -122,7 +111,9 @@ public class SwerveModule {
             return;
         }
         state = SwerveModuleState.optimize(state, getState().angle);
-        driveMotor.set(state.speedMetersPerSecond / Constants.DriveConstants.kPhysicalMaxSpeedMeterPerSecond);
+        driveMotor.set(state.speedMetersPerSecond);
+
+        // Constants.DriveConstants.kPhysicalMaxSpeedMeterPerSecond
         turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians()));
         // Debug:回傳State的狀態
         //SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
