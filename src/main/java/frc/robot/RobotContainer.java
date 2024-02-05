@@ -22,7 +22,7 @@ public class RobotContainer {
     swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(swerveSubsystem,
       () -> stick.getLeftY(),
       () -> stick.getLeftX(),
-      () -> stick.getRightX(),
+      () -> -MathUtil.applyDeadband(stick.getRightX()*0.2 , 0.05),
       () -> stick.getAButton()));
 
     configureBindings();
