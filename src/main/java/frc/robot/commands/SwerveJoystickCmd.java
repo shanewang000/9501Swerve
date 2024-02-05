@@ -49,7 +49,7 @@ public class SwerveJoystickCmd extends Command{
         // 設定Deadband(換羅技飛行搖桿的話要重新再設定一個)
         xSpeed = Math.abs(xSpeed) > Constants.OIConstants.kDeadband ? xSpeed : 0;
         ySpeed = Math.abs(ySpeed) > Constants.OIConstants.kDeadband ? ySpeed : 0;
-        turningSpeed = Math.abs(turningSpeed) > Constants.OIConstants.kDeadband ? turningSpeed : 0;
+        //  turningSpeed = Math.abs(turningSpeed) > Constants.OIConstants.kDeadband ? turningSpeed : 0;
 
         // 平滑化
         xSpeed = xLimiter.calculate(xSpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
